@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2023",
     "module": "commonjs",
-    "rootDir": "./algorithms",
+    "rootDir": "./",
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["algorithms/**/*.ts"],
+  "include": ["algorithms/**/*.ts", "data-structures/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }
