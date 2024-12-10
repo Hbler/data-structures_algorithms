@@ -6,3 +6,12 @@
  * Backtrack when no unvisited adjacent nodes are found
  * Continue until all nodes are visited
  */
+
+import Graph from "../../../data-structures/graph/graph";
+import { GraphNode } from "../../../data-structures/interfaces/Node";
+
+export const depthFirstSearch = (
+  graph: Graph,
+  start: number,
+  target: number
+) => {};
