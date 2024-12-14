@@ -8,10 +8,34 @@
  */
 
 import Graph from "../../../data-structures/graph/graph";
-import { GraphNode } from "../../../data-structures/interfaces/Node";
 
 export const depthFirstSearch = (
   graph: Graph,
   start: number,
   target: number
-) => {};
+): boolean => {
+  const nodes = graph.nodes;
+  const nodeMap = new Map(nodes.map((node) => [node.value, node]));
+
+  const visited = new Set();
+
+  const dfs = (current: number) => {
+    if (visited.has(current)) return false;
+    visited.add(current);
+
+    if (current === target) return true;
+
+    const currentNode = nodeMap.get(current);
+    if (!currentNode || !currentNode.neighbors) return false;
+
+    for (const neighbor of currentNode.neighbors) {
+      if (neighbor && dfs(neighbor.value)) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
+  return dfs(start);
+};
