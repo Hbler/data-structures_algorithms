@@ -12,12 +12,12 @@ class Graph {
 
   constructor(starter?: GraphStarter) {
     if (starter) {
-      if (this.isAdjacencyList(starter)) {
-        this.nodes = Graph.fromAdjacencyList(starter);
-      } else if (this.isEdgeList(starter)) {
+      if (this.isEdgeList(starter)) {
         this.nodes = Graph.fromEdgeList(starter);
       } else if (this.isAdjacencyMatrix(starter)) {
         this.nodes = Graph.fromAdjacencyMatrix(starter);
+      } else if (this.isAdjacencyList(starter)) {
+        this.nodes = Graph.fromAdjacencyList(starter);
       }
     }
   }
@@ -50,7 +50,11 @@ class Graph {
   private isAdjacencyMatrix(
     starter: GraphStarter
   ): starter is AdjacencyMatrix<number> {
-    return Array.isArray(starter) && Array.isArray(starter[0]);
+    return (
+      Array.isArray(starter) &&
+      Array.isArray(starter[0]) &&
+      starter.length === starter[0].length
+    );
   }
   private isEdgeList(starter: GraphStarter): starter is EdgeList<number> {
     return (
